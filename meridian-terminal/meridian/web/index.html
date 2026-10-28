@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Meridian Terminal</title>
+<link rel="icon" href="/static/img/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/css/terminal.css?v={{VERSION}}">
+</head>
+<body>
+<div id="app" class="app" hidden>
+  <header class="topbar">
+    <div class="brand" title="Meridian Terminal {{VERSION}}">
+      <span class="brand-mark">MERIDIAN</span>
+      <span class="brand-ver">{{VERSION}}</span>
+    </div>
+    <form class="cmd" id="cmd-form" autocomplete="off">
+      <label for="cmd" class="cmd-prompt" aria-label="Command">&gt;</label>
+      <input id="cmd" class="cmd-input" spellcheck="false" autocapitalize="characters"
+             placeholder="Ticker or command: NVDA, BUY NVDA 5, BT AAPL, HELP">
+      <button type="submit" class="go-key">GO</button>
+      <ul class="cmd-suggest" id="cmd-suggest" role="listbox" hidden></ul>
+    </form>
+    <div class="badges" id="badges"></div>
+    <div class="clocks" id="clocks"></div>
+  </header>
+  <div class="tape" id="tape" aria-label="Watchlist prices"><div class="tape-track" id="tape-track"></div></div>
+  <div class="banner" id="banner" hidden></div>
+
+  <main class="screen" id="scr-monitor">
+    <div class="grid" id="grid"></div>
+  </main>
+  <main class="screen" id="scr-backtest" hidden></main>
+  <main class="screen" id="scr-settings" hidden></main>
+  <main class="screen" id="scr-help" hidden></main>
+
+  <footer class="statusbar">
+    <nav class="fkeys" id="fkeys"></nav>
+    <div class="sb-right" id="sb-right"></div>
+  </footer>
+</div>
+
+<div id="locked" class="locked" hidden>
+  <div class="locked-box">
+    <h1>Meridian Terminal</h1>
+    <p>This dashboard needs its access link.</p>
+    <p class="dim">On the computer running Meridian, run <code>meridian url</code> and open the
+      link it prints. In the desktop app this happens automatically.</p>
+    <form id="token-form">
+      <input id="token-input" placeholder="Paste the link or token" spellcheck="false">
+      <button type="submit" class="btn primary">Unlock</button>
+    </form>
+  </div>
+</div>
+
+<div id="modal-root"></div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<script src="/static/vendor/lightweight-charts.standalone.production.js"></script>
+<script type="module" src="/static/js/app.js?v={{VERSION}}"></script>
+</body>
+</html>

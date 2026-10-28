@@ -1,0 +1,32 @@
+[Unit]
+Description=Meridian Terminal (headless trading engine)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=meridian
+Group=meridian
+Environment=MERIDIAN_HOME=/var/lib/meridian
+ExecStart=/opt/meridian/meridian headless
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=30
+
+# hardening
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/meridian
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

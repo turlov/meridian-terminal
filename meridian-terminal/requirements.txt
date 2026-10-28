@@ -1,0 +1,9 @@
+# Engine + server (all platforms, including headless Linux)
+anthropic>=0.40
+tradernet-sdk>=2.2.0
+aiohttp>=3.9
+requests>=2.31
+feedparser>=6.0
+numpy>=1.26
+platformdirs>=4.0
+keyring>=24

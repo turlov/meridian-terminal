@@ -1,0 +1,4 @@
+pyinstaller>=6.6
+pyinstaller-hooks-contrib>=2024.0
+pillow>=10
+pytest>=8
